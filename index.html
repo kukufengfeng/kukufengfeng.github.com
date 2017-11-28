@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+<script>
+</script>
+</head>
+
+<body>
+
+<canvas id="c1" width="800" height="500">sdfsfsfsfddsf</canvas>
+</body>
+<script type="text/javascript">
+    function d2a(n){
+        return n*Math.PI/180;
+    }
+    var oC = document.getElementById("c1");
+    var gd = oC.getContext("2d");
+
+    var oImg = new Image();
+    
+    oImg.onload = function(){
+        
+         gd.drawImage(oImg,0,0);
+         
+         var result = gd.getImageData(0,0,oC.width,oC.height);
+         
+         console.log(result);
+         
+         var arr = result.data;
+         for(var i = 0; i < arr.length; i+=4){
+             arr[i] = 255 - arr[i];
+             arr[i+1] = 255 - arr[i];
+             arr[i+2] = 255 - arr[i];
+         }
+         
+         
+         gd.putImageData(result,0,0);
+    };
+    
+    
+    oImg.src = "4.jpg";
+</script>
+</html>
